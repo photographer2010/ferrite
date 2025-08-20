@@ -1,0 +1,39 @@
+name: Public domain plugins
+author: kingbri
+sources:
+  - name: 1337x
+    version: 1
+    minVersion: '0.7'
+    about: >-
+      A popular torrent indexer with a wide variety of content.
+    website: https://1337x.to
+    tags:
+      - name: Popular
+        color: 34c759
+      - name: Movies
+      - name: TV Shows
+    htmlParser:
+      searchUrl: /search/{query}/1/
+      rows: 'tbody > tr'
+      magnet:
+        query: 'td:nth-child(2) > a:nth-child(1)'
+        attribute: 'href'
+      title:
+        query: 'td:nth-child(2) > a:nth-child(2)'
+      size:
+        query: 'td:nth-child(5)'
+      sl:
+        seeders: 'td:nth-child(3)'
+        leechers: 'td:nth-child(4)'
+actions:
+  - name: Open in Safari
+    version: 1
+    minVersion: '0.7'
+    about: |-
+      Opens the given link in Safari
+    website: https://www.apple.com/safari/
+    requires:
+      - debrid
+    deeplink:
+      - os: iOS
+        scheme: '{link}'
